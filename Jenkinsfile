@@ -14,6 +14,10 @@ pipeline{
         FTD_PASSWORD           = credentials('ftd-password')
         AWS_SSH_KEY_NAME       = 'ftd_key'
         SCA_SERVICE_KEY        = credentials('sca-service-key')
+        SW_API_KEY             = credentials('sw-api-key')
+        SW_API_SEC             = credentials('sw-api-sec')
+        SW_URL                 = credentials('sw-url')
+        SW_ROOT_SCOPE          = credentials('sw-root-scope')
     }
     stages{
         // This stage will run Terraform Apply when "Deploy Env" is added to the commit message //
