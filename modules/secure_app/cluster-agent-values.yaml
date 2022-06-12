@@ -1,0 +1,28 @@
+# AppDynamics controller info
+# controllerInfo values are declared in terraform-appd-cluster-agent.tf
+imageInfo:
+  agentImage: docker.io/appdynamics/cluster-agent
+  agentTag: latest
+  operatorImage: docker.io/appdynamics/cluster-agent-operator
+  operatorTag: latest
+  imagePullPolicy: Always
+
+  # Cluster agent config
+clusterAgent:
+  nsToMonitor: [default,iks,kube-node-lease,kube-public,kube-system,appdynamics,sock-shop]
+
+# Auto-Instrumentation of Java Agent
+instrumentationConfig:
+  enabled: true
+  instrumentationMethod: Env
+  nsToInstrumentRegex: sock-shop
+  appNameStrategy: namespace
+  instrumentationRules:
+    - namespaceRegex: sock-shop
+      language: java
+      labelMatch:
+        - framework: java
+      imageInfo:
+        image: "docker.io/appdynamics/java-agent:latest"
+        agentMountPath: /opt/appdynamics
+        imagePullPolicy: "Always"
