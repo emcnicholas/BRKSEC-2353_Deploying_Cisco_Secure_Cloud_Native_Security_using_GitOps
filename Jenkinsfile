@@ -13,6 +13,7 @@ pipeline{
         FTD_USERNAME           = credentials('ftd-username')
         FTD_PASSWORD           = credentials('ftd-password')
         AWS_SSH_KEY_NAME       = 'ftd_key'
+        SCA_SERVICE_KEY        = credentials('sca-service-key')
     }
     stages{
         // This stage will run Terraform Apply when "Deploy Env" is added to the commit message //
@@ -37,7 +38,8 @@ pipeline{
                 -var="aws_az2=$PROD_AWS_AZ2" \
                 -var="ftd_pass=$FTD_FTD_USERNAME" \
                 -var="ftd_pass=$FTD_PASSWORD" \
-                -var="key_name=$AWS_SSH_KEY_NAME"'
+                -var="key_name=$AWS_SSH_KEY_NAME" \
+                -var="sca_service_key=$SCA_SERVICE_KEY"'
             }
         }
         // This stage will destroy the environment when "Destroy Environment" is added to the commit message
@@ -61,7 +63,8 @@ pipeline{
                 -var="aws_az2=$PROD_AWS_AZ2" \
                 -var="ftd_pass=$FTD_FTD_USERNAME" \
                 -var="ftd_pass=$FTD_PASSWORD" \
-                -var="key_name=$AWS_SSH_KEY_NAME"'
+                -var="key_name=$AWS_SSH_KEY_NAME" \
+                -var="sca_service_key=$SCA_SERVICE_KEY"'
             }
         }
     }

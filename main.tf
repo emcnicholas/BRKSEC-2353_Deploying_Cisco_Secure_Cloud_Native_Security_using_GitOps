@@ -24,6 +24,13 @@ resource "null_resource" "update_kubeconfig" {
   }
 }
 
+// Deploy Secure Cloud Analytics
+module "Secure_Cloud_Analytics" {
+  depends_on      = [module.Infrastructure]
+  source          = "./modules/secure_cloud_analytics"
+  sca_service_key = var.sca_service_key
+}
+
 // Providers //
 terraform {
   required_providers {
@@ -72,3 +79,4 @@ provider "helm" {
     token                  = module.Infrastructure.eks_cluster_auth_token
   }
 }
+

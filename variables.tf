@@ -36,3 +36,8 @@ variable "remote_hosts" {
   description = "Remote hosts allowed to access the environment"
   default = "0.0.0.0/0"
 }
+
+// Secure Cloud Analytics Variables
+variable "sca_service_key" {
+  description = "Secure Cloud Analytics Service Key"
+}
