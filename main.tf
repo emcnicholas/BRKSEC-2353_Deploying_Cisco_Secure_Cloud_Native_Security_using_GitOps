@@ -101,3 +101,4 @@ provider "tetration" {
   api_url = var.secure_workload_api_url
   disable_tls_verification = true
 }
+
