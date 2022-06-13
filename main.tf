@@ -79,3 +79,4 @@ provider "helm" {
     token                  = module.Infrastructure.eks_cluster_auth_token
   }
 }
+
