@@ -33,3 +33,9 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+.idea/aws.xml
+.idea/BRKSEC-2353_Deploying_Cisco_Secure_Cloud_Native_Security_using_GitOps.iml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
