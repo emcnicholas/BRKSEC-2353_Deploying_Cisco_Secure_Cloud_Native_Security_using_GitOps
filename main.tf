@@ -95,6 +95,7 @@ provider "helm" {
     token                  = module.Infrastructure.eks_cluster_auth_token
   }
 }
+
 provider "tetration" {
   api_key = var.secure_workload_api_key
   api_secret = var.secure_workload_api_sec
