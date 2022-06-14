@@ -14,6 +14,10 @@ pipeline{
         FTD_PASSWORD           = credentials('ftd-password')
         AWS_SSH_KEY_NAME       = 'ftd_key'
         SCA_SERVICE_KEY        = credentials('sca-service-key')
+        SW_API_KEY             = credentials('sw-api-key')
+        SW_API_SEC             = credentials('sw-api-sec')
+        SW_URL                 = credentials('sw-url')
+        SW_ROOT_SCOPE          = credentials('sw-root-scope')
     }
     stages{
         // This stage will run Terraform Apply when "Deploy Env" is added to the commit message //
@@ -39,7 +43,11 @@ pipeline{
                 -var="ftd_pass=$FTD_FTD_USERNAME" \
                 -var="ftd_pass=$FTD_PASSWORD" \
                 -var="key_name=$AWS_SSH_KEY_NAME" \
-                -var="sca_service_key=$SCA_SERVICE_KEY"'
+                -var="sca_service_key=$SCA_SERVICE_KEY" \
+                -var="secure_workload_api_key=$SW_API_KEY" \
+                -var="secure_workload_api_sec=$SW_API_SEC" \
+                -var="secure_workload_api_url=$SW_URL" \
+                -var="secure_workload_root_scope=$SW_ROOT_SCOPE"'
             }
         }
         // This stage will destroy the environment when "Destroy Environment" is added to the commit message
@@ -64,7 +72,11 @@ pipeline{
                 -var="ftd_pass=$FTD_FTD_USERNAME" \
                 -var="ftd_pass=$FTD_PASSWORD" \
                 -var="key_name=$AWS_SSH_KEY_NAME" \
-                -var="sca_service_key=$SCA_SERVICE_KEY"'
+                -var="sca_service_key=$SCA_SERVICE_KEY" \
+                -var="secure_workload_api_key=$SW_API_KEY" \
+                -var="secure_workload_api_sec=$SW_API_SEC" \
+                -var="secure_workload_api_url=$SW_URL" \
+                -var="secure_workload_root_scope=$SW_ROOT_SCOPE"'
             }
         }
     }
