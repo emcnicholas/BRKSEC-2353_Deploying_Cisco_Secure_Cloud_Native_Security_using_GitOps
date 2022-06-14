@@ -117,12 +117,14 @@ provider "helm" {
     token                  = module.Infrastructure.eks_cluster_auth_token
   }
 }
+
 provider "tetration" {
   api_key = var.secure_workload_api_key
   api_secret = var.secure_workload_api_sec
   api_url = var.secure_workload_api_url
   disable_tls_verification = true
 }
+
 provider "securecn" {
   access_key = var.secure_cn_access_key
   secret_key = var.secure_cn_secret_key
