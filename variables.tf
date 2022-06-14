@@ -55,3 +55,11 @@ variable "secure_workload_api_url" {
 variable "secure_workload_root_scope" {
   description = "The ID of the Secure Workload Root Scope"
 }
+
+// Panoptica Variables
+variable "secure_cn_access_key" {
+  description = "Secure CN Access Key"
+}
+variable "secure_cn_secret_key" {
+  description = "Secure CN Secret Key"
+}

@@ -43,6 +43,14 @@ module "Secure_Workload" {
   env_id                     = var.env_id
 }
 
+// Deploy Panoptica - Secure Application Cloud (CN)
+module "Panoptica" {
+  depends_on                      = [null_resource.update_kubeconfig]
+  source                          = "./modules/panoptica"
+  environment_name                = module.Infrastructure.eks_cluster_name
+  kubernetes_cluster_context_name = module.Infrastructure.eks_cluster_arn
+}
+
 // Providers //
 terraform {
   required_providers {
@@ -65,6 +73,10 @@ terraform {
     tetration = {
       source = "CiscoDevNet/tetration"
       version = "0.1.0"
+    }
+    securecn = {
+      source = "Portshift/securecn"
+      version = ">= 1.1.10"
     }
   }
 }
@@ -102,4 +114,10 @@ provider "tetration" {
   api_url = var.secure_workload_api_url
   disable_tls_verification = true
 }
+
+provider "securecn" {
+  access_key = var.secure_cn_access_key
+  secret_key = var.secure_cn_secret_key
+}
+
 
