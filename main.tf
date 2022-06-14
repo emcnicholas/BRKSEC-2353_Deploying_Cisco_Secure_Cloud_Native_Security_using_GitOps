@@ -51,6 +51,16 @@ module "Panoptica" {
   kubernetes_cluster_context_name = module.Infrastructure.eks_cluster_arn
 }
 
+// Deploy Secure Application (AppD) -  I know so confusing :(
+module "Secure_App" {
+  source = "./modules/secure_app"
+  appd_url          = var.appd_url
+  appd_account_name = var.appd_account_name
+  appd_username     = var.appd_username
+  appd_password     = var.appd_password
+  appd_accessKey    = var.appd_accessKey
+}
+
 // Providers //
 terraform {
   required_providers {
