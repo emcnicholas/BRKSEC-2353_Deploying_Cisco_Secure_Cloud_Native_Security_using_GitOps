@@ -129,4 +129,3 @@ provider "securecn" {
   access_key = var.secure_cn_access_key
   secret_key = var.secure_cn_secret_key
 }
-
